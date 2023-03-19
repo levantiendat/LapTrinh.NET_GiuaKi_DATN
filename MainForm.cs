@@ -97,15 +97,21 @@ namespace _102210247_LeVanTienDat
             }
             if (txt != "")
             {
+                DataTable data1 = new DataTable();
+                
                 if (first == 0)
                 {
-                    first = 1;
-                    query += "where NAMEDA= '" + txt + "' ";
+                    
+                    query += "where NAMEDA like '" + txt + "' or DATN.ID like '" + txt + "' or NAMESV like '" + txt + "' or GVHD.HUONGNC like '" + txt + "' or GVHD.NAMEGV like '" + txt + "'";
                 }
                 else
                 {
-                    query += "and NAMEDA= '" + txt + "' ";
+                    
+                    query += "and NAMEDA like '" + txt + "' or DATN.ID like '" + txt + "' or NAMESV like '" + txt + "' or GVHD.HUONGNC like '" + txt + "' or GVHD.NAMEGV like '" + txt + "'";
                 }
+                
+                
+                first = 1;
             }
             data.DataSource = DBHelper.Instance.GetRecords(query);
         }
